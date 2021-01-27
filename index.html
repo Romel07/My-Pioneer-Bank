@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>My Pioneer Bank</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css"
+        integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+</head>
+
+<body>
+<!--------------------------------------1st Page---------------------------------->
+    <section id="login-area">
+        <h1 class="text-center">Welcome To Pioneer Bank</h1>
+        <div class="submit-area">
+            <h3>Login</h3>
+            <input type="text" name="" placeholder="Email" class="form-control" id=""><br>
+            <input type="password" name="" placeholder="Password" class="form-control" id=""><br>
+            <button type="button" class="btn btn-success" id="login">Enter</button>
+        </div>
+    </section>
+<!-------------------------------2nd Page (1st Part)---------------------------------------------->
+
+    <section id="transection-area">
+        <div class="row">
+            <div class="col-md-4">
+                <div class="status deposit">
+                    <h4>Deposit</h4>
+                    <h2>$<span id="currentDeposit">100</span></h2>
+                </div>
+            </div>
+            <div class="col-md-4">
+                <div class="status withdraw">
+                    <h4>Withdraw</h4>
+                    <h2>$<span id="withdraw">50</span></h2>
+                </div>
+            </div>
+            <div class="col-md-4">
+                <div class="status balance">
+                    <h4>Balance</h4>
+                    <h2>$<span id="balance">1240</span></h2>
+                </div>
+            </div>
+        </div>
+<!----------------------------------2nd pgae (2nd Part)------------------------------------------------------->        
+        <div class="row">
+            <div class="col-md-6">
+                <div class="submit-area">
+                    <h4>Deposit</h4>
+                    <input type="text" class="form-control" name="" id="depositAmount"
+                        placeholder="$ Amount you want to deposit"><br> 
+                    <button type="button" class="btn btn-success" id="deposit">Deposit</button>
+                </div>
+            </div>
+            <div class="col-md-6">
+                <div class="submit-area">
+                    <h4>Withdraw</h4>
+                    <input type="text" class="form-control" name="" placeholder="$ Amount you want to withdraw"><br>
+                    <button type="button" class="btn btn-success">Withdraw</button>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <script>
+        // Login page Button
+
+        document.getElementById("login").addEventListener("click", function () {
+            // console.log("amare click marse");
+            document.getElementById("login-area").style.display = "none";
+            document.getElementById("transection-area").style.display = "block";
+        })
+        
+        // Deposit Button Event Hanadler
+
+        document.getElementById("deposit").addEventListener("click", function () {
+            const depositNumber = document.getElementById("depositAmount").value;
+            const number = parseFloat(depositNumber);
+            const currentDepositAmount = document.getElementById("currentDeposit").innerText;
+            const currentDepositNumber = parseFloat(currentDepositAmount);
+            const totalDeposit = number + currentDepositNumber;
+            document.getElementById("currentDeposit").innerText = totalDeposit;
+
+            const currtentBalanceAmount= (document.getElementById("balance").innerText);
+            const currentBalanceNumber = parseFloat(currtentBalanceAmount);
+            const totalBalance = number + currentBalanceNumber;
+            document.getElementById('balance').innerText = totalBalance;
+        })
+
+
+    </script>
+</body>
+
+</html>
