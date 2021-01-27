@@ -34,13 +34,13 @@
             <div class="col-md-4">
                 <div class="status withdraw">
                     <h4>Withdraw</h4>
-                    <h2>$<span id="withdraw">50</span></h2>
+                    <h2>$<span id="currentWithdraw">50</span></h2>
                 </div>
             </div>
             <div class="col-md-4">
                 <div class="status balance">
                     <h4>Balance</h4>
-                    <h2>$<span id="balance">1240</span></h2>
+                    <h2>$<span id="currentBalance">1240</span></h2>
                 </div>
             </div>
         </div>
@@ -57,8 +57,8 @@
             <div class="col-md-6">
                 <div class="submit-area">
                     <h4>Withdraw</h4>
-                    <input type="text" class="form-control" name="" placeholder="$ Amount you want to withdraw"><br>
-                    <button type="button" class="btn btn-success">Withdraw</button>
+                    <input type="text" class="form-control" name="" id="withdrawAmount" placeholder="$ Amount you want to withdraw"><br>
+                    <button type="button" class="btn btn-success" id="withdraw">Withdraw</button>
                 </div>
             </div>
         </div>
@@ -76,6 +76,7 @@
         // Deposit Button Event Hanadler
 
         document.getElementById("deposit").addEventListener("click", function () {
+
             const depositNumber = document.getElementById("depositAmount").value;
             const number = parseFloat(depositNumber);
             const currentDepositAmount = document.getElementById("currentDeposit").innerText;
@@ -83,10 +84,33 @@
             const totalDeposit = number + currentDepositNumber;
             document.getElementById("currentDeposit").innerText = totalDeposit;
 
-            const currtentBalanceAmount= (document.getElementById("balance").innerText);
+            const currtentBalanceAmount= document.getElementById("currentBalance").innerText;
             const currentBalanceNumber = parseFloat(currtentBalanceAmount);
             const totalBalance = number + currentBalanceNumber;
-            document.getElementById('balance').innerText = totalBalance;
+            document.getElementById('currentBalance').innerText = totalBalance;
+
+            document.getElementById("depositAmount").value = "";
+        })
+
+        // Withdraw Button Event Hanadler
+
+        document.getElementById("withdraw").addEventListener("click", function () {
+            
+            const withdrawNumber = document.getElementById("withdrawAmount").value;
+            const number = parseFloat(withdrawNumber);
+            
+            const currentWithdrawAmount = document.getElementById("currentWithdraw").innerText;
+            const currentWithdrawNumber = parseFloat(currentWithdrawAmount);
+
+            const totalWithdraw = number + currentWithdrawNumber;
+            document.getElementById("currentWithdraw").innerText = totalWithdraw;
+
+            const currtentBalanceAmount= document.getElementById("currentBalance").innerText;
+            const currentBalanceNumber = parseFloat(currtentBalanceAmount);
+            const totalBalance = currentBalanceNumber - number;
+            document.getElementById('currentBalance').innerText = totalBalance;
+
+            document.getElementById("withdrawAmount").value = "";
         })
 
 
